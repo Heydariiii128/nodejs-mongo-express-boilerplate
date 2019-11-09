@@ -23,6 +23,11 @@ app.get("/", (req, res) => {
 
 cardsRoutes(app);
 
+// error handler
+app.use(function(err, req, res, next) {
+  res.status(400).json("خطای 404");
+});
+
 // listen for requests
 app.listen(3001, () => {
   console.log("Server is listening on port 3001");
