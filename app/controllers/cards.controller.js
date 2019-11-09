@@ -1,6 +1,6 @@
 const Card = require("../models/cards.model.js");
 
-// دریافت همه ی تسک ها
+// find all tasks
 exports.findAll = (req, res) => {
   Card.find()
     .then(cards => {
@@ -13,7 +13,7 @@ exports.findAll = (req, res) => {
     });
 };
 
-// ایجاد و ذخیره تسک جدید
+// create & save task
 exports.create = (req, res) => {
   // Validate request
   if (!req.body.title) {
@@ -22,13 +22,13 @@ exports.create = (req, res) => {
     });
   }
 
-  // ایجاد تسک جدید
+  // create new task
   const card = new Card({
     title: req.body.title || "بدون عنوان",
     description: req.body.description
   });
 
-  // ذخیره تسک
+  // save task
   card
     .save()
     .then(data => {
